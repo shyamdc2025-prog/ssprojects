@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EmmyTasty — Food Delivery</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="brand">🍴 <b>Emmy</b><span>Tasty</span></div>
+  <div class="address">📍 <b>Delivering to</b><small> Chennai, Tamil Nadu</small></div>
+  <button class="cartTop" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
+</header>
+
+<main>
+<section class="hero">
+  <div class="heroText">
+    <div class="pill">🔥 Special offers today</div>
+    <h1>Delicious food,<br><span>delivered fast.</span></h1>
+    <p>Order your favourite meals from restaurants around you.</p>
+    <div class="search"><span>🔎</span><input id="search" oninput="render()" placeholder="Search for dishes or restaurants"></div>
+  </div>
+  <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85" alt="Pizza">
+</section>
+
+<section class="section">
+<h2>Explore cuisines</h2>
+<div id="cats" class="cats"></div>
+</section>
+
+<section class="section">
+<div class="sectionTitle"><h2>Popular restaurants</h2><button onclick="allRestaurants()">View all</button></div>
+<div id="restaurants" class="grid"></div>
+</section>
+</main>
+
+<div id="restaurantModal" class="overlay hidden"><div class="sheet large">
+<button class="close" onclick="closeRestaurant()">✕</button>
+<div id="restaurantContent"></div>
+</div></div>
+
+<div id="cartModal" class="overlay hidden"><div class="sheet">
+<div class="sheetHead"><h2>Your cart</h2><button class="closeSmall" onclick="closeCart()">✕</button></div>
+<div id="cartItems"></div>
+<div id="minimumMsg" class="minimum"></div>
+<div class="bill">
+<div><span>Item total</span><b id="itemTotal">₹0</b></div>
+<div><span>Delivery fee</span><b id="deliveryFee">₹0</b></div>
+<div><span>Taxes & charges</span><b id="tax">₹0</b></div>
+<div class="grand"><span>Grand total</span><b id="grandTotal">₹0</b></div>
+</div>
+<button id="checkoutBtn" class="primary" onclick="checkout()">Proceed to payment</button>
+</div></div>
+
+<div id="paymentModal" class="overlay hidden"><div class="sheet">
+<button class="close" onclick="closePayment()">✕</button>
+<h2>Secure payment</h2>
+<p class="muted">Razorpay Checkout will open securely and show the payment methods enabled on your Razorpay account.</p>
+<div class="payments">
+  <div class="paymentInfo">📱 UPI</div>
+  <div class="paymentInfo">💳 Cards</div>
+  <div class="paymentInfo">🏦 Netbanking</div>
+  <div class="paymentInfo">👛 Wallets</div>
+</div>
+<button class="primary" onclick="closePayment()">Continue</button>
+</div></div>
+
+<div id="toast" class="toast"></div>
+<nav><button class="active" onclick="scrollTopPage()">🏠<small>Home</small></button><button onclick="focusSearch()">🔎<small>Search</small></button><button onclick="showToast('Orders will appear here')">📦<small>Orders</small></button><button onclick="openCart()">🛒<small>Cart</small></button><button onclick="showToast('Profile coming soon')">👤<small>Profile</small></button></nav>
+<script src="script.js"></script>
+</body>
+</html>
